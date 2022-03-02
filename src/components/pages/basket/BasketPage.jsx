@@ -29,7 +29,7 @@ function BasketPage({ basketStorage, setLengthBasket }) {
       ) : (
         <h1 className="white">Корзина пуста</h1>
       )}
-      ;<Button>Оформить заказ</Button>
+      ;
     </div>
   );
 }

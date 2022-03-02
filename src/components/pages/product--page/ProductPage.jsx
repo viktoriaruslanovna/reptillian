@@ -63,7 +63,7 @@ function ProductPage({ create }) {
             <p className={styles.description__name}>{product.name}</p>
             <p className={styles.description__body}>{product.description}</p>
           </div>
-          <p className={styles.product__price} onClick={() => create(product)}>
+          <p className={styles.product__pric} onClick={() => create(product)}>
             {product.price}
           </p>
         </div>

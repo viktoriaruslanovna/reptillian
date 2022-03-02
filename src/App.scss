@@ -1,0 +1,27 @@
+.root {
+  font-family: 'Ubuntu', sans-serif;
+  background: white;
+}
+
+.App._lock {
+  overflow: hidden;
+}
+
+.wrapper {
+  margin-top: 80px;
+}
+
+// @font-face {
+//   font-family: 'SourceSansPro';
+//   src: url('./media/fonts/SourceSansPro-Light.ttf') format('truetype');
+// }
+
+// @font-face {
+//   font-family: 'Montserrat';
+//   src: url('./media/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+// }
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('./media/fonts/Ubuntu/Ubuntu-Light.ttf') format('truetype');
+}

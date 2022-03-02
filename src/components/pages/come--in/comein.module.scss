@@ -1,0 +1,75 @@
+.come__in {
+  height: 100vh;
+  background-image: url(./media/eublefar4.jpg);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 25px;
+  justify-content: center;
+  width: 35%;
+  margin: 0 auto;
+  padding: 70px 50px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
+
+  .phrase__wrapper {
+    margin: 0 auto;
+    padding: 5px 15px;
+    font-size: 19px;
+    border-radius: 18px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+
+  .btn {
+    width: 50%;
+    margin: 20px auto 0;
+    padding: 10px;
+    font-size: 28px;
+    border-radius: 50px;
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: 1124px) {
+  .come__in {
+    background: url(./media/eublefarvertical.jpg);
+    background-size: 100%;
+    background-position: start;
+    background-repeat: no-repeat;
+  }
+
+  .form {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .come__in {
+    background: none;
+  }
+
+  h1 {
+    padding: 40px 20px;
+  }
+
+  .form {
+    width: 75%;
+    padding: 60px 30px;
+
+    .phrase__wrapper {
+      font-size: 15px;
+    }
+
+    .btn {
+      width: 60%;
+      padding: 5px;
+      font-size: 21px;
+    }
+  }
+}

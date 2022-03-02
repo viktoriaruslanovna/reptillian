@@ -1,0 +1,139 @@
+$sizebox: 400px;
+$sizebox768: 280px;
+$sizebox500: 200px;
+
+.product__page {
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.product__slider__box {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+
+  .btn {
+    width: 70px;
+    height: 70px;
+    margin: 15px;
+    background-color: rgba(255, 245, 220, 0.9);
+    border-radius: 50%;
+  }
+
+  .img__box {
+    width: $sizebox;
+    height: $sizebox;
+
+    .img {
+      position: absolute;
+      width: $sizebox;
+      height: $sizebox;
+    }
+
+    .reverse {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.product__description {
+  width: $sizebox;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 25px;
+  border-radius: 0 0 10px 10px;
+  background-color: rgba(255, 245, 220, 0.9);
+
+  .description {
+    padding: 40px 0 20px;
+
+    .description__name {
+      padding-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .description__body {
+      padding: 10px;
+    }
+  }
+}
+
+.product__price {
+  margin: 0 40px;
+  padding: 40px 0;
+  border-radius: 0 0 10px 10px;
+  border-top: 1px solid black;
+
+  &:hover {
+    margin: 0;
+    color: white;
+    border: 1px solid rgba(255, 245, 220, 0.9);
+    background-color: rgba(0, 0, 0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product__slider__box {
+    .btn {
+      width: 50px;
+      height: 50px;
+    }
+
+    .img__box {
+      width: $sizebox768;
+      height: $sizebox768;
+
+      .img {
+        width: $sizebox768;
+        height: $sizebox768;
+      }
+    }
+  }
+
+  .product__description {
+    width: $sizebox768;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .product__slider__box {
+    .btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .img__box {
+      width: $sizebox500;
+      height: $sizebox500;
+
+      .img {
+        width: $sizebox500;
+        height: $sizebox500;
+      }
+    }
+  }
+
+  .product__description {
+    width: $sizebox500;
+  }
+
+  .product__description {
+    .description {
+      padding: 20px 0 10px;
+
+      .description__name {
+        padding-bottom: 10px;
+        font-size: 20px;
+      }
+
+      .description__body {
+        padding: 5px;
+      }
+    }
+  }
+
+  .product__price {
+    padding: 30px 0;
+  }
+}

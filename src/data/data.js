@@ -3,7 +3,7 @@ import { myFetch } from '../fetch/fetch';
 export const products = [
   {
     id: 1,
-    name: 'Ящерка',
+    name: 'Эублефар',
     price: '10 000',
     img: './products_media/product_eublefar_1.jpg',
     imgSlide: './products_media/product_eublefar_8.jpg',
@@ -11,7 +11,7 @@ export const products = [
   },
   {
     id: 2,
-    name: 'Ящерка другая',
+    name: 'Эублефар бенгальский',
     price: '10 000',
     img: './products_media/product_eublefar_8.jpg',
     imgSlide: './products_media/product_eublefar_1.jpg',
@@ -19,7 +19,7 @@ export const products = [
   },
   {
     id: 3,
-    name: 'Ящерка такая',
+    name: 'Эублефар древесный',
     price: '100 000',
     img: './products_media/product_eublefar_3.jpg',
     imgSlide: './products_media/product_eublefar_1.jpg',
@@ -27,7 +27,7 @@ export const products = [
   },
   {
     id: 4,
-    name: 'Ящерка вот такая',
+    name: 'Эублефар',
     price: '100 000',
     img: './products_media/product_eublefar_4.jpg',
     imgSlide: './products_media/product_eublefar_1.jpg',
@@ -36,7 +36,7 @@ export const products = [
   },
   {
     id: 5,
-    name: 'Ящерка эта',
+    name: 'Эублефар',
     price: '10 000',
     img: './products_media/product_eublefar_9.jpg',
     imgSlide: './products_media/product_eublefar_1.jpg',
@@ -44,7 +44,7 @@ export const products = [
   },
   {
     id: 6,
-    name: 'Ящерка и вот эта',
+    name: 'Эублефар дневной мадагаскарский',
     price: '10 000',
     img: './products_media/product_eublefar_6.jpg',
     imgSlide: './products_media/product_eublefar_1.jpg',

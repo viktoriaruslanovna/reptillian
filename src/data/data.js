@@ -44,7 +44,7 @@ export const products = [
   },
   {
     id: 6,
-    name: 'Эублефар дневной мадагаскарский',
+    name: 'Эублефар дневной',
     price: '10 000',
     img: './products_media/product_eublefar_6.jpg',
     imgSlide: './products_media/product_eublefar_1.jpg',

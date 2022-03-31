@@ -1,7 +1,5 @@
 import { userStorage } from '../storage/userStorage';
-// import { useContext } from 'react';
 
-// const { auth, setAuth } = useContext(AuthContext);
 const baseUrl = 'https://conduit-api-realworld.herokuapp.com/api';
 
 const makeFetch = async (username, email, password, method, url) => {
@@ -43,21 +41,14 @@ const fetcher = (method, url, body) => {
       Accept: 'application/json',
     },
   };
+
   if (method !== 'GET') {
     config.body = JSON.stringify(body);
   }
+
   config.headers.Authorization = 'Token ' + token;
-  // if (method === 'PATCH') {
-  //   config.headers.Authorization = 'Token ' + token;
-  //   console.log(config.headers);
-  // }
   return fetch(baseUrl + url, config).then(async result => {
-    const code = Number(result.status);
-    console.log(code);
     result = await result.json();
-    // if (code >= 299) {
-    //   throw result;
-    // }
     console.log(result);
     return result;
   });

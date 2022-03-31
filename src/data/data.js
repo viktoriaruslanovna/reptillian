@@ -1,4 +1,4 @@
-import { myFetch } from '../fetch/fetch';
+import { myFetch } from '../fetch/index';
 
 export const products = [
   {
@@ -56,24 +56,47 @@ export const pages = {
   logIn: {
     title: 'Войти в аккаунт',
     inputs: [
-      { placeholder: 'Введите почту', name: 'email' },
-      { placeholder: 'Введите пароль', name: 'password' },
+      { name: 'email', placeholder: 'Введите почту' },
+      {
+        name: 'password',
+        placeholder: 'Введите пароль',
+        validate: {
+          minLength: {
+            value: 8,
+            message: 'Пароль должен быть больше 8 символов',
+          },
+        },
+      },
     ],
     button: { title: 'Вход', method: myFetch.post, url: '/users/login' },
     phrase: 'Регистрация',
     link: '/signup',
   },
+
   signUp: {
     title: 'Регистрация',
     inputs: [
-      { placeholder: 'Введите почту', name: 'email' },
-      { placeholder: 'Введите логин', name: 'username' },
-      { placeholder: 'Введите пароль', name: 'password' },
+      {
+        name: 'email',
+        placeholder: 'Введите почту',
+      },
+      { name: 'username', placeholder: 'Введите логин' },
+      {
+        name: 'password',
+        placeholder: 'Введите пароль',
+        validate: {
+          minLength: {
+            value: 8,
+            message: 'Пароль должен быть больше 8 символов',
+          },
+        },
+      },
     ],
     button: { title: 'Регистрация', method: myFetch.post, url: '/users' },
     phrase: 'Авторизоваться',
     link: '/login',
   },
+
   сatalog: {
     title: 'Каталог',
   },
@@ -82,7 +105,7 @@ export const pages = {
 export const menu = [
   { id: 1, title: 'Главная', url: '/home' },
   { id: 2, title: 'Каталог', url: '/catalog' },
-  { id: 3, title: 'Личный кабинет', url: '/login' },
+  { id: 3, title: 'Личный кабинет', url: '/account' },
   { id: 4, title: 'Корзина', url: '/basket' },
   { id: 5, title: 'Информация', url: '/information' },
 ];

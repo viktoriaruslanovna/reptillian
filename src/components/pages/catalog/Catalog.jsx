@@ -4,8 +4,6 @@ import H1 from '../../elements/H1.jsx';
 import Input from '../../elements/Input.jsx';
 
 function Catalog({ products, props, create, searchQuery, setSearchQuery }) {
-  // window.scrollTo(0, 0);
-
   return (
     <div className={styles.catalog}>
       <H1 className="white" props={props.title} />
@@ -18,7 +16,7 @@ function Catalog({ products, props, create, searchQuery, setSearchQuery }) {
         />
       </div>
       <div className={styles.catalog__products}>
-        {products.map((products, index) => (
+        {products.map(products => (
           <Products product={products} key={products.id} create={create} />
         ))}
       </div>

@@ -1,0 +1,33 @@
+body {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.white {
+  color: white;
+}
+
+.root {
+  font-family: 'Ubuntu', sans-serif;
+  background: white;
+}
+
+.App._lock {
+  overflow: hidden;
+}
+
+.wrapper {
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 500px) {
+  p {
+    font-size: 18px;
+  }
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../media/fonts/Ubuntu/Ubuntu-Light.ttf') format('truetype');
+}

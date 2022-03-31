@@ -1,81 +1,90 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './comein.module.scss';
-import { makeFetch } from '../../../fetch/fetch';
-import { AuthContext } from '../../../context/index';
+import { useForm } from 'react-hook-form';
 import { userStorage } from '../../../storage/userStorage';
 import H1 from '../../elements/H1.jsx';
 import Button from '../../elements/Button.jsx';
-import Input from '../../elements/Input.jsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useActions } from '../../../hooks/useActions';
 
 function ComeIn({ props }) {
-  const { auth, setAuth } = useContext(AuthContext);
-  const [change, setChange] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [fetchError, setFetchError] = useState();
+  const { authenicate, unauthenicate, checkAuth } = useActions();
+  const { isAuth } = useSelector(state => state.auth);
+  const navigate = useNavigate();
+
+  const {
+    register,
+    formState: { errors: formErrors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
   useEffect(() => {
-    userStorage.get() ? setAuth(true) : setAuth(false);
-    console.log(auth);
-  }, [change]);
+    reset();
+  }, []);
 
-  const makeInputControlled = () => {
-    props.inputs.forEach(e => {
-      if (e.name === 'email') {
-        e.handler = setEmail;
-        e.value = email;
-      }
-      if (e.name === 'username') {
-        e.handler = setUsername;
-        e.value = username;
-      }
-      if (e.name === 'password') {
-        e.handler = setPassword;
-        e.value = password;
-      }
-    });
-  };
-  makeInputControlled();
+  useEffect(() => {
+    checkAuth();
+  }, [isAuth]);
 
-  const sendForm = async e => {
-    e.preventDefault();
-    await makeFetch(
-      username,
-      email,
-      password,
-      props.button.method,
-      props.button.url,
-    );
-    // setChange(change + 1);
-  };
+  const sendForm = handleSubmit(async user => {
+    const body = {
+      user,
+    };
 
-  const logout = () => {
-    userStorage.set('');
-    setChange(change + 1);
-  };
+    const error = await props.button.method(props.button.url, body);
+
+    if (error) {
+      setFetchError(error);
+    } else {
+      reset();
+      authenicate();
+      navigate('/account');
+    }
+  });
 
   return (
     <div className={styles.come__in}>
       <H1 props={props.title} />
       <form className={styles.form} action="" onSubmit={sendForm}>
         {props.inputs.map((props, index) => (
-          <Input
-            placeholder={props.placeholder}
-            name={props.name}
-            key={index++}
-            value={props.value}
-            onChange={e => props.handler(e.target.value)}
-          />
+          <div key={index++}>
+            <input
+              placeholder={props.placeholder}
+              key={index++}
+              {...register(props.name, {
+                required: true,
+                // minLength: props.validate?.minLength
+                //   ? {
+                //       value: props.validate.minLength.value,
+                //       message: props.validate.minLength.message,
+                //     }
+                //   : { value: 0 },
+              })}
+            />
+            <div key={index++} className={styles.form__error}>
+              {fetchError?.name === props.name && <p>{fetchError.message}</p>}
+              {formErrors?.[props.name] && (
+                <p>
+                  {formErrors?.[props.name].message ||
+                    'Необходимо заполнить поле'}
+                </p>
+              )}
+            </div>
+          </div>
         ))}
+
         <div className={styles.phrase__wrapper}>
           <Link to={props.link} className={styles.phrase}>
-            {' '}
-            {props.phrase}{' '}
+            {props.phrase}
           </Link>
         </div>
 
-        <Button className={styles.btn}> {props.button.title} </Button>
+        <Button type="submit" className={styles.btn}>
+          {props.button.title}
+        </Button>
       </form>
     </div>
   );

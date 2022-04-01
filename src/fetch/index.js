@@ -20,16 +20,20 @@ export const fetcher = async (method, url, body) => {
   config.body = JSON.stringify(body);
 
   let response;
-
   switch (method) {
     case 'POST':
       response = await fetch(baseUrl + url, config);
       response = await response.json();
       console.log(response);
 
-    case 'PATCH':
+    // case 'PATCH':
     // response = await fetch(baseUrl + url, config);
     // response = await response.json();
+
+    default:
+      response = {
+        errors: ['', 'Нет такого метода'],
+      };
   }
 
   if (response.errors) {
@@ -40,7 +44,6 @@ export const fetcher = async (method, url, body) => {
 };
 
 const makeError = error => {
-  console.log(error);
   let correctError;
   switch (error) {
     case 'No User with this email id':
@@ -65,6 +68,12 @@ const makeError = error => {
       return (correctError = {
         name: 'username',
         message: 'Пользователь с таким логином уже существует',
+      });
+
+    default:
+      return (correctError = {
+        name: '',
+        message: error,
       });
   }
 };

@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 function HeaderList({ menu }) {
   const [active, setActive] = useState(0);
+
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>

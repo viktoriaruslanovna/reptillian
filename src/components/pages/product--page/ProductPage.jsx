@@ -6,19 +6,21 @@ import H1 from '../../elements/H1.jsx';
 import icon from './media/icon__arrow.svg';
 import { products } from '../../../data/data';
 
-function ProductPage({ create }) {
+function ProductPage() {
   const params = useParams();
-  const product = products.find(e => e.id == params.id);
+  const product = products.find(e => e.id === params.id);
 
   const Box = useRef();
   let number = 1;
 
+  const create = () => {};
+
   const changeImg = () => {
     Array.from(Box.current.childNodes).map(elem => {
-      if (elem.id == number) {
-        elem.style = 'display:none';
+      if (elem.id === number) {
+        return (elem.style = 'display:none');
       } else {
-        elem.style = 'display:block';
+        return (elem.style = 'display:block');
       }
     });
   };

@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react';
-import styles from './comein.module.scss';
 import { useForm } from 'react-hook-form';
-import { userStorage } from '../../../storage/userStorage';
-import H1 from '../../elements/H1.jsx';
-import Button from '../../elements/Button.jsx';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useActions } from '../../../hooks/useActions';
+import Button from '../../elements/Button.jsx';
+import H1 from '../../elements/H1.jsx';
+import styles from './comein.module.scss';
 
 function ComeIn({ props }) {
   const [fetchError, setFetchError] = useState();
-  const { authenicate, unauthenicate, checkAuth } = useActions();
-  const { isAuth } = useSelector(state => state.auth);
+  const { authenicate, checkAuth } = useActions();
   const navigate = useNavigate();
 
   const {
@@ -23,11 +20,8 @@ function ComeIn({ props }) {
 
   useEffect(() => {
     reset();
-  }, []);
-
-  useEffect(() => {
     checkAuth();
-  }, [isAuth]);
+  }, []);
 
   const sendForm = handleSubmit(async user => {
     const body = {
@@ -57,7 +51,7 @@ function ComeIn({ props }) {
               {...register(props.name, {
                 required: true,
                 // minLength: props.validate?.minLength
-                //   ? {
+                //    ? {
                 //       value: props.validate.minLength.value,
                 //       message: props.validate.minLength.message,
                 //     }

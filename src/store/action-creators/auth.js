@@ -1,4 +1,5 @@
 import { userStorage } from '../../storage/userStorage';
+import { changeUser } from '../../store/action-creators/user';
 
 export const authenicate = () => {
   return dispatch => {
@@ -13,7 +14,7 @@ export const unauthenicate = () => {
     dispatch({
       type: 'UNAUTHENICATE',
     });
-    userStorage.set('');
+    changeUser('');
   };
 };
 

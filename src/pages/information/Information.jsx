@@ -1,5 +1,5 @@
 import styles from './information.module.scss';
-import H1 from '../../elements/H1.jsx';
+import H1 from '../../components/elements/H1.jsx';
 
 function Information() {
   return (

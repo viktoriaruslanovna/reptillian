@@ -4,9 +4,6 @@
   min-height: 100vh;
   background: rgba(0, 0, 0, 0.9);
 
-
-
-
   .catalog__products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -36,7 +33,6 @@
 /*Product Arcticle*/
 
 .product {
-  // width: 100%;
   display: grid;
   margin: 0 auto;
   text-align: center;

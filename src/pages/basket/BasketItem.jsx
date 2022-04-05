@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from './basket.module.scss';
 import Delete from './media/delete.svg';
-import Button from '../../elements/Button.jsx';
-import { useActions } from '../../../hooks/useActions';
+import Button from '../../components/elements/Button.jsx';
+import { useActions } from '../../hooks/useActions';
 
 function BasketItem({ basket }) {
   const { removeBasketProduct } = useActions();

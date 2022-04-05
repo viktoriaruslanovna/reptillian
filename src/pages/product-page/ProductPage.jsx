@@ -1,23 +1,23 @@
+import styles from './productpage.module.scss';
+import icon from './media/icon__arrow.svg';
+import { products } from '../../data/data';
 import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import styles from './productpage.module.scss';
-import Button from '../../elements/Button.jsx';
-import H1 from '../../elements/H1.jsx';
-import icon from './media/icon__arrow.svg';
-import { products } from '../../../data/data';
+import Button from '../../components/elements/Button.jsx';
+import H1 from '../../components/elements/H1.jsx';
+import { useActions } from '../../hooks/useActions';
 
 function ProductPage() {
+  const { createBasketProduct } = useActions();
   const params = useParams();
-  const product = products.find(e => e.id === params.id);
+  const product = products.find(e => e.id == params.id);
 
   const Box = useRef();
   let number = 1;
 
-  const create = () => {};
-
   const changeImg = () => {
     Array.from(Box.current.childNodes).map(elem => {
-      if (elem.id === number) {
+      if (elem.id == number) {
         return (elem.style = 'display:none');
       } else {
         return (elem.style = 'display:block');
@@ -65,7 +65,10 @@ function ProductPage() {
             <p className={styles.description__name}>{product.name}</p>
             <p className={styles.description__body}>{product.description}</p>
           </div>
-          <p className={styles.product__pric} onClick={() => create(product)}>
+          <p
+            className={styles.product__price}
+            onClick={() => createBasketProduct(product)}
+          >
             {product.price}
           </p>
         </div>

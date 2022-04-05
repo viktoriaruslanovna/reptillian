@@ -1,29 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useActions } from '../../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import styles from './catalog.module.scss';
 
 function Product({ product }) {
   const { createBasketProduct } = useActions();
-
-  const create = product => {
-    createBasketProduct(product);
-  };
-  // const createBasketProduct = product => {
-  //   const basketArr = basketStorage.get();
-
-  //   const idArr = [];
-  //   basketArr.map(elem => {
-  //     idArr.push(elem.id);
-  //   });
-
-  //   if (idArr.includes(product.id)) {
-  //     alert('Это животное имеется лишь в одном экземпляре');
-  //   } else {
-  //     basketArr.push(product);
-  //     basketStorage.set(basketArr);
-  //     // setLengthBasket(basketStorage.get().length);
-  //   }
-  // };
 
   return (
     <div className={styles.product}>
@@ -37,7 +17,7 @@ function Product({ product }) {
       </Link>
       <div className={styles.product__price}>
         <p
-          onClick={() => create(product)}
+          onClick={() => createBasketProduct(product)}
           className={styles.product__price__title}
         >
           {product.price}

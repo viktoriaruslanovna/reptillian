@@ -1,6 +1,6 @@
 import styles from './home.module.scss';
 import eublefar from './media/eublefar.jpg';
-import Catalog from '../catalog/Catalog.jsx';
+import Catalog from '../catalog/Catalog';
 
 function Home({ products, searchQuery, setSearchQuery, create, props }) {
   return (

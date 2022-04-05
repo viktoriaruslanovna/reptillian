@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import styles from './catalog.module.scss';
+import { pages } from '../../data/data';
 import Products from './Products.jsx';
-import H1 from '../../elements/H1.jsx';
-import SearchInput from '../../search-input/SearchInput';
-import { pages } from '../../../data/data';
+import H1 from '../../components/elements/H1.jsx';
+import SearchInput from '../../components/search-input/SearchInput';
 
 function Catalog() {
   const [searchProducts, setSearchProducts] = useState([]);

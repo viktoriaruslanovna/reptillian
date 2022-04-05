@@ -1,4 +1,4 @@
-import { userStorage } from '../storage/userStorage';
+import { changeUser } from '../store/action-creators/user';
 
 const baseUrl = 'https://conduit-api-realworld.herokuapp.com/api';
 
@@ -6,10 +6,10 @@ export const myFetch = {
   get: url => fetcher('GET', url),
   post: (url, body) => fetcher('POST', url, body),
   delete: (url, body) => fetcher('DELETE', url, body),
-  put: (url, body) => fetcher('PATCH', url, body),
+  patch: (url, body, token) => fetcher('PATCH', url, body, token),
 };
 
-export const fetcher = async (method, url, body) => {
+export const fetcher = async (method, url, body, token = '') => {
   const config = {
     method,
     headers: {
@@ -24,22 +24,25 @@ export const fetcher = async (method, url, body) => {
     case 'POST':
       response = await fetch(baseUrl + url, config);
       response = await response.json();
+
+    case 'PATCH':
+      config.headers.Authorization = 'Token ' + token;
+      response = await fetch(baseUrl + url, config);
+      response = await response.json();
       console.log(response);
 
-    // case 'PATCH':
-    // response = await fetch(baseUrl + url, config);
-    // response = await response.json();
-
-    default:
-      response = {
-        errors: ['', 'Нет такого метода'],
-      };
+    // default:
+    //   response = {
+    //     errors: {
+    //       body: ['', 'Нет такого метода'],
+    //     },
+    //   };
   }
 
   if (response.errors) {
     return makeError(response.errors.body[1]);
   } else {
-    userStorage.set(response);
+    return response.user;
   }
 };
 

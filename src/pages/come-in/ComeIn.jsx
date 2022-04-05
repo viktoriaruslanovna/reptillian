@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
+import styles from './comein.module.scss';
+import Button from '../../components/elements/Button.jsx';
+import H1 from '../../components/elements/H1.jsx';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useActions } from '../../../hooks/useActions';
-import Button from '../../elements/Button.jsx';
-import H1 from '../../elements/H1.jsx';
-import styles from './comein.module.scss';
+import { useActions } from '../../hooks/useActions';
 
 function ComeIn({ props }) {
   const [fetchError, setFetchError] = useState();
-  const { authenicate, checkAuth } = useActions();
+  const { authenicate, checkAuth, changeUser } = useActions();
   const navigate = useNavigate();
 
   const {
@@ -28,11 +28,12 @@ function ComeIn({ props }) {
       user,
     };
 
-    const error = await props.button.method(props.button.url, body);
+    const result = await props.button.method(props.button.url, body);
 
-    if (error) {
-      setFetchError(error);
+    if (typeof result === 'string') {
+      setFetchError(result);
     } else {
+      changeUser(result);
       reset();
       authenicate();
       navigate('/account');
@@ -50,12 +51,12 @@ function ComeIn({ props }) {
               key={index++}
               {...register(props.name, {
                 required: true,
-                // minLength: props.validate?.minLength
-                //    ? {
-                //       value: props.validate.minLength.value,
-                //       message: props.validate.minLength.message,
-                //     }
-                //   : { value: 0 },
+                minLength: props.validate?.minLength
+                  ? {
+                      value: props.validate.minLength.value,
+                      message: props.validate.minLength.message,
+                    }
+                  : { value: 0 },
               })}
             />
             <div key={index++} className={styles.form__error}>

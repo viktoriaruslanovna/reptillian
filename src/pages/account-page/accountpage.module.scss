@@ -1,0 +1,65 @@
+.accountpage{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapperleft{
+  z-index: 1;
+  position: fixed ;
+  top: 100px;
+  left: 20px;
+
+  .logoutbtn{
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.9);
+
+    &:hover{
+      background-color: #b22222;
+    }
+  }
+}
+
+.info{
+  width: 60%;
+  text-align: center;
+
+  .info__img{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+  }
+
+  .info__wrapper{
+  width: 30%;
+    margin: 0 auto;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  & input{
+    padding: 7px;
+  }
+
+  .info__item{
+    font-size: 20px;
+
+    &.error{
+      border: 2px solid #b22222;
+    }
+    }
+
+    .info__label{
+      font-size: 15px;
+      }
+
+      .info__btn{
+        margin-top: 20px;
+        padding: 10px 15px;
+        font-size: 20px;
+        border: 1px solid black;
+        }
+}

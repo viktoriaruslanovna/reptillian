@@ -16,16 +16,18 @@ import { useSelector } from 'react-redux';
 
 function App() {
   const location = useLocation();
+  const { scroll } = useSelector(state => state.scroll);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
-  const { user } = useSelector(state => state.user);
-
   useEffect(() => {
-    console.log(user);
-  }, [user]);
+    scroll
+      ? document.body.classList.remove('_lock')
+      : document.body.classList.add('_lock');
+  }, [scroll]);
+
   return (
     <div className="App">
       <HeaderList menu={menu} />

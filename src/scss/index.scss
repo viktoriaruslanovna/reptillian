@@ -4,6 +4,10 @@ body {
   width: 100%;
 }
 
+body._lock {
+  overflow: hidden;
+}
+
 .white {
   color: white;
 }
@@ -16,10 +20,6 @@ body {
 .App {
   width: 100%;
   min-height: 100vh;
-}
-
-.App._lock {
-  overflow: hidden;
 }
 
 .wrapper {

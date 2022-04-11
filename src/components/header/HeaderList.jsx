@@ -3,10 +3,12 @@ import styles from './header.module.scss';
 import logo from './media/logo.svg';
 import burger from './media/burger.png';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useActions } from '../../hooks/useActions.js';
+import { useSelector } from 'react-redux';
 
 function HeaderList({ menu }) {
-  const [active, setActive] = useState(0);
+  const { scroll } = useSelector(state => state.scroll);
+  const { scrollLock, scrollAllow } = useActions();
 
   return (
     <header className={styles.header}>
@@ -16,17 +18,17 @@ function HeaderList({ menu }) {
             <img className={styles.header__icon} src={logo} alt="" />
           </div>
         </Link>
-        <div className={styles.burger} onClick={() => setActive(!active)}>
+        <div
+          className={styles.burger}
+          onClick={() => (scroll ? scrollLock() : scrollAllow())}
+        >
           <img className={styles.header__icon} src={burger} alt="" />
         </div>
         <div
-          className={[
-            styles.header__box,
-            active ? styles._active : console.log(),
-          ].join(' ')}
+          className={[styles.header__box, !scroll && styles._active].join(' ')}
         >
           {menu.map(menu => (
-            <HeaderItem setActive={setActive} menu={menu} key={menu.id} />
+            <HeaderItem menu={menu} key={menu.id} />
           ))}
         </div>
       </div>

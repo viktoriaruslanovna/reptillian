@@ -1,12 +1,15 @@
 import styles from './header.module.scss';
 import { Link } from 'react-router-dom';
+import { useActions } from '../../hooks/useActions';
 
-function Header({ setActive, menu }) {
+function Header({ menu }) {
+  const { scrollAllow } = useActions();
+
   return (
     <Link
       to={menu.url}
       className={styles.header__box__title}
-      onClick={() => setActive(0)}
+      onClick={scrollAllow}
     >
       {menu.title}
     </Link>
